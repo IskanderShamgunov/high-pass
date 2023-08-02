@@ -17,12 +17,12 @@ const fileInclude = require('gulp-file-include');
 const webp = require('gulp-webp');
 
 const clean = () => {
-  return del(['dist']);
+  return del(['docs']);
 }
 
 const resources = () => {
   return src('src/resources/**')
-  .pipe(dest('dist/resources/'));
+  .pipe(dest('docs/resources/'));
 }
 
 const styles = () => {
@@ -51,7 +51,7 @@ const styles = () => {
   .pipe(cleanCSS({
     level: 2,
   }))
-  .pipe(dest('dist'))
+  .pipe(dest('docs'))
 };
 
 const html = () => {
@@ -70,7 +70,7 @@ const html = () => {
       ['<no-typography>', '</no-typography>']
     ]
   }))
-  .pipe(dest('dist'))
+  .pipe(dest('docs'))
 };
 
 const svgSprites = () => {
@@ -82,7 +82,7 @@ const svgSprites = () => {
       }
     }
   }))
-  .pipe(dest('dist/images'));
+  .pipe(dest('docs/images'));
 };
 
 const scripts = () => {
@@ -97,7 +97,7 @@ const scripts = () => {
   .pipe(uglify({
     toplevel: true,
   }).on('error', notify.onError()))
-  .pipe(dest('dist'))
+  .pipe(dest('docs'))
 }
 
 const images = () => {
@@ -108,9 +108,9 @@ const images = () => {
     'src/images/**/*.jpeg',
   ])
   .pipe(image())
-  .pipe(dest('dist/images'))
+  .pipe(dest('docs/images'))
   .pipe(webp())
-  .pipe(dest('dist/images'));
+  .pipe(dest('docs/images'));
 };
 
 exports.prod = series(clean, parallel(resources, html, scripts, styles, images, svgSprites));
