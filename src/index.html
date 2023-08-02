@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фотостудия High pass</title>
+
+  <link rel="preload" href="resources/fonts/roboto-regular.woff2" as="font">
+  <link rel="preload" href="resources/fonts/roboto-bold.woff2" as="font">
+  <link rel="preload" href="resources/fonts/ttfirsneue-regular.woff2" as="font">
+  <link rel="preload" href="resources/fonts/ttfirsneue-medium.woff2" as="font">
+  <link rel="preload" href="resources/fonts/ttfirsneue-bold.woff2" as="font">
+
+  <link rel="shortcut icon" type="image/x-icon" href="resources/favicon.ico"/>
+  <link rel="stylesheet" href="main.css">
+  <script defer src="https://api-maps.yandex.ru/2.1/?apikey=<ваш API-ключ>&lang=ru_RU"></script>
+  <script defer src="app.js"></script>
+</head>
+<body class="page__body">
+  @@include('./partials/header.html')
+
+  <main>
+    <h1 class="visually-hidden">Фотостудия High pass</h1>
+
+    @@include('./partials/hero.html')
+    @@include('./partials/about.html')
+    @@include('./partials/projects.html')
+    @@include('./partials/contacts.html')
+
+  </main>
+
+  @@include('./partials/footer.html')
+</body>
+</html>

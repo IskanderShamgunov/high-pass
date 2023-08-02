@@ -1,0 +1,243 @@
+@use "../../partials" as *;
+
+@mixin transition-delay($order) {
+  transition-delay: $order * .05s;
+}
+
+@mixin menu-wrapper-wrap {
+  position: relative;
+  order: 10;
+  padding: 13px 0;
+  width: 100%;
+  z-index: 1000;
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: -30px;
+    right: -30px;
+    background-color: var(--black-4a);
+    z-index: 0;
+  }
+}
+
+@mixin menu-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: flex-start;
+  padding: 47px 20px 35px;
+  background-color: var(--black-20);
+
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .5s ease-in-out, visibility 0s .5s;
+  pointer-events: none;
+
+  &--active {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
+    pointer-events: all;
+
+    & .nav__item {
+      translate: 0;
+      transition: translate .5s ease-in-out;
+
+      &:nth-child(1) {
+        @include transition-delay(1);
+      }
+
+      &:nth-child(2) {
+        @include transition-delay(2);
+      }
+
+      &:nth-child(3) {
+        @include transition-delay(3);
+      }
+
+      &:nth-child(4) {
+        @include transition-delay(4);
+      }
+
+      &:nth-child(5) {
+        @include transition-delay(5);
+      }
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 14px;
+    left: 21px;
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
+
+  &__nav {
+    flex-grow: 1;
+    margin-bottom: 30px;
+    min-height: 100px;
+    overflow-y: auto;
+  }
+
+  &__link {
+    display: block;
+    margin-top: auto;
+    padding-left: 20px;
+    background-image: url("images/shared/phone.svg");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+}
+
+.menu-wrapper {
+  margin-right: auto;
+  max-width: 740px;
+  width: 58%;
+
+  @include small-tablet {
+    @include menu-wrapper-wrap;
+  }
+
+  @include mobile {
+    @include menu-wrapper-wrap;
+  }
+
+  @include small-mobile {
+    @include menu-wrapper-wrap;
+  }
+}
+
+.burger {
+  @include burger;
+  display: none;
+  color: var(--white);
+
+  &::after {
+    width: 50%;
+  }
+
+  &--active::after {
+    width: 100%;
+  }
+
+  @include mobile {
+    display: block;
+  }
+
+  @include small-mobile {
+    display: block;
+  }
+}
+
+.menu {
+  &__close-btn {
+    display: none;
+
+  }
+
+  &__nav {
+    width: 100%;
+  }
+
+  &__link {
+    display: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--orange-primary);
+    transition: color .2s ease-in-out;
+
+    svg {
+      fill: currentColor;
+    }
+
+    &:active {
+      color: var(--orange-focus-active);
+    }
+  }
+
+  @include mobile {
+    @include menu-mobile;
+  }
+
+  @include small-mobile {
+    @include menu-mobile;
+  }
+}
+
+.nav {
+  &__list {
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    font-family: "TT Firs Neue", sans-serif;
+  }
+
+  &__link {
+    position: relative;
+    color: var(--white);
+    transition: color .2s ease-in-out;
+    z-index: 0;
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: -5px;
+      right: -5px;
+      bottom: 0;
+      z-index: -1;
+      transition: background-color .2s ease-in-out;
+    }
+
+    @include hover {
+      color: var(--orange-primary);
+    }
+
+    &:focus-visible {
+      &::before {
+        background-color: var(--orange-hover-focus);
+      }
+      outline: none;
+    }
+
+    &:active {
+      color: var(--orange-focus-active);
+    }
+  }
+
+  @include mobile {
+    &__list {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+      line-height: 21px;
+    }
+
+    &__item {
+      translate: -200% 0;
+    }
+  }
+
+  @include small-mobile {
+    &__list {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+      line-height: 21px;
+    }
+
+    &__item {
+      translate: -200% 0;
+      transition: translate .5s ease-in-out;
+    }
+  }
+}

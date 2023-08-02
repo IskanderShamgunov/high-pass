@@ -1,0 +1,87 @@
+@use "../../partials" as *;
+
+.search {
+  pointer-events: none;
+  visibility: hidden;
+  overflow: hidden;
+  transition: visibility 0s .5s;
+  z-index: 200;
+
+  &--active {
+    visibility: visible;
+    pointer-events: all;
+  }
+}
+
+.search-form {
+  align-items: center;
+  gap: 10px;
+  display: flex;
+  padding-left: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--black-20);
+  translate: 100% 0;
+  transform-origin: right;
+  transition: translate .5s ease-in-out;
+
+  &--active {
+    visibility: visible;
+    translate: 0 0;
+    transition: translate .5s ease-in-out;
+  }
+
+  &__input {
+    flex-grow: 1;
+    border-bottom: 1px solid var(--gray-e9);
+    color: var(--white);
+    background-color: transparent;
+
+    &::placeholder {
+      color: var(--gray-e9);
+    }
+
+    @include hover {
+      border-color: var(--orange-primary);
+    }
+
+    &:focus-visible {
+      border-color: var(--orange-primary);
+      outline: none;
+    }
+
+    &:active {
+      border-color: var(--orange-focus-active);
+    }
+  }
+
+  &__close-btn {
+    align-self: flex-start;
+    width: 23px;
+    height: 23px;
+  }
+
+  @include small-tablet {
+    translate: 100% 0;
+
+    &--active {
+      translate: 0 0;
+    }
+  }
+
+  @include mobile {
+    translate: 100% 0;
+
+    &--active {
+      translate: 0 0;
+    }
+  }
+
+  @include small-mobile {
+    translate: 100% 0;
+
+    &--active {
+      translate: 0 0;
+    }
+  }
+}

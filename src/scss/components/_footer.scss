@@ -1,0 +1,146 @@
+@use "../partials" as *;
+
+.footer {
+  padding: 20px 0;
+  color: var(--gray-ca);
+  background-color: var(--black-20);
+  overflow: hidden;
+
+  .container {
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .logo-wrapper {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  &__logo-descr {
+    font-size: 14px;
+    line-height: 18px;
+    font-family: "TT Firs Neue";
+    color: var(--gray-e9);
+  }
+
+  &__quot {
+    padding-right: 10.5%;
+    line-height: 22px;
+
+    q {
+      display: block;
+      quotes: none;
+    }
+  }
+
+  &__socials {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  &__socials-text {
+    line-height: 22px;
+  }
+
+  &__socials-list {
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 0;
+    line-height: 0;
+
+    svg {
+      fill: var(--gray-ca);
+      transition: fill .2s ease-in-out;
+    }
+  }
+
+  @include tablet {
+    &__quot {
+      padding-right: 0;
+      padding-left: 6%;
+    }
+  }
+
+  @include small-tablet {
+    padding: 25px 0;
+
+    &__quot {
+      display: none;
+    }
+  }
+
+  @include mobile {
+    padding: 31px 0 0;
+
+    .container {
+      flex-direction: column-reverse;
+    }
+
+    .logo-wrapper {
+      padding: 14px 0;
+      width: 100vw;
+      align-items: center;
+      background-color: var(--black-4a);
+    }
+
+    &__logo-descr {
+      font-size: 10px;
+      line-height: 13px;
+    }
+
+    &__quot {
+      display: none;
+    }
+  }
+
+  @include small-mobile {
+    padding: 31px 0 0;
+
+    .container {
+      flex-direction: column-reverse;
+    }
+
+    .logo-wrapper {
+      padding: 14px 0;
+      width: 100vw;
+      align-items: center;
+      background-color: var(--black-4a);
+    }
+
+    &__logo-descr {
+      font-size: 10px;
+      line-height: 13px;
+    }
+
+    &__quot {
+      display: none;
+    }
+  }
+}
+
+.socials {
+  &__link {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+
+    @include hover {
+      svg {
+        fill: var(--orange-primary);
+      }
+    }
+
+    &:focus-visible {
+      outline: none;
+      svg {
+        fill: var(--orange-hover-focus);
+      }
+    }
+
+    &:active svg {
+      fill: var(--orange-focus-active);
+    }
+  }
+}

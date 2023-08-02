@@ -1,0 +1,25 @@
+@use "../../partials" as *;
+
+.logo {
+  line-height: 0;
+
+  @include tablet {
+    width: 166px;
+    height: 26px;
+  }
+
+  @include small-tablet {
+    width: 166px;
+    height: 26px;
+  }
+
+  @include mobile {
+    width: 112px;
+    height: 18px;
+  }
+
+  @include small-mobile {
+    width: 112px;
+    height: 18px;
+  }
+}

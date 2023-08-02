@@ -1,0 +1,147 @@
+@use "../../partials" as *;
+@use 'vars' as *;
+
+.header {
+  --padding: 24px;
+  padding: var(--padding) 0;
+  background-color: var(--black-20);
+  overflow: hidden;
+
+  .container {
+    position: relative;
+    align-items: center;
+    z-index: 100;
+  }
+
+  &__logo {
+    flex-shrink: 0;
+    margin-right: 10.8%;
+  }
+
+  &__menu {
+    width: 100%;
+  }
+
+  &__search-btn {
+    font-size: 0;
+    line-height: 0;
+
+    svg {
+      fill: var(--white);
+      transition: fill .2s ease-in-out;
+    }
+
+    @include hover {
+      svg {
+        fill: var(--orange-primary);
+      }
+    }
+
+    &:focus-visible {
+      outline: none;
+      svg {
+        fill: var(--orange-hover-focus);
+      }
+    }
+
+    &:active {
+      svg {
+        fill: var(--orange-focus-active);
+      }
+    }
+  }
+
+  &__search {
+    position: absolute;
+    top: 50%;
+    right: var(--container-offset);
+    width: 362px;
+    height: 30px;
+    translate: 0 $search-translate-y;
+  }
+
+  @include tablet {
+    --padding: 27px;
+    padding: var(--padding) 0;
+
+    &__logo {
+      margin-right: 8.5%;
+    }
+  }
+
+  @include small-tablet {
+    --padding: 27px;
+    padding: 0;
+    padding-top: var(--padding);
+
+    .container {
+      flex-wrap: wrap;
+      row-gap: 27px;
+    }
+
+    &__logo {
+      margin-right: auto;
+    }
+
+    &__search {
+      top: 0;
+      translate: 0 $search-mobile-translate-y;
+    }
+  }
+
+  @include mobile {
+    --padding: 27px;
+    padding: 0;
+    padding-top: var(--padding);
+
+    .container {
+      flex-wrap: wrap;
+      row-gap: 27px;
+    }
+
+    &__logo {
+      margin-right: auto;
+    }
+
+    &__search-btn {
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &__search {
+      top: 0;
+      width: calc(100% - var(--container-offset));
+      translate: 0 $search-mobile-translate-y;
+    }
+  }
+
+  @include small-mobile {
+    --padding: 25px;
+    padding: 0;
+    padding-top: var(--padding);
+
+    .container {
+      flex-wrap: wrap;
+      row-gap: 25px;
+    }
+
+    &__logo {
+      margin-right: auto;
+    }
+
+    &__search-btn {
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &__search {
+      top: 0;
+      width: calc(100% - var(--container-offset));
+      translate: 0 $search-mobile-translate-y;
+    }
+  }
+}

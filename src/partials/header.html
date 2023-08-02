@@ -1,0 +1,78 @@
+<header class="header">
+
+  <div class="container flex">
+
+    <a href="#" class="header__logo logo" aria-label="Логотип">
+      <img src="images/shared/logo.svg" alt="logo" width="191" height="31">
+    </a>
+
+    <div class="menu-wrapper flex">
+
+      <button class="header__burger burger" type="button" aria-label="Открыть мобильное меню">
+        <span class="burger__line"></span>
+      </button>
+
+      <div class="header__menu menu flex-column">
+
+        <button class="menu__close-btn btn-reset cancel-btn" type="button" aria-label="Закрыть мобильное меню"></button>
+
+        <nav class="menu__nav nav">
+          <ul class="nav__list list-reset flex">
+
+            <li class="nav__item">
+              <a href="#about" class="nav__link">
+                О студии
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#projects" class="nav__link">
+                Наши проекты
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#services" class="nav__link">
+                Услуги
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#guids" class="nav__link">
+                Мастер-классы
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#contacts" class="nav__link">
+                Контакты
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+
+        <a href="tel:+749542423532" class="menu__link">
+          +7 495 424-23-532
+        </a>
+
+      </div>
+
+    </div>
+
+    <button class="header__search-btn btn-reset" type="button" aria-label="Открыть поиск">
+      <svg width="25" height="25" viewBox="0 0 25 25">
+        <use xlink:href="images/sprites.svg#search" />
+      </svg>
+    </button>
+
+    <div class="header__search search">
+      <form class="header__search-form search-form search__form">
+        <input class="search-form__input input-reset" type="search" name="req" placeholder="Что будем искать?" autocomplete="none">
+        <button class="search-form__close-btn btn-reset cancel-btn" type="button" aria-label="Закрыть поиск"></button>
+      </form>
+    </div>
+
+  </div>
+
+</header>

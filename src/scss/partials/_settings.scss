@@ -1,0 +1,305 @@
+@use "./mixins" as *;
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.page {
+  height: 100%;
+  font-family: "Roboto", "TT Firs Neue", sans-serif;
+  font-weight: 400;
+  -webkit-text-size-adjust: 100%;
+}
+
+.stop-scroll {
+  overflow: hidden;
+}
+
+.page__body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100%;
+  font-size: 16px;
+}
+
+picture {
+  font-size: 0;
+  line-height: 0;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+.site-container {
+  overflow: hidden; // если используете на сайте position: sticky - уберите эту настройку
+}
+
+.is-hidden {
+  display: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.btn-reset {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.input-reset {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  border-radius: 0;
+  background-color: #fff;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 var(--container-offset);
+  max-width: var(--container-width);
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 31px;
+  font-family: "TT Firs Neue";
+  color: var(--black-20);
+
+  @include small-mobile {
+    font-size: 18px;
+    line-height: 23px;
+  }
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+.centered {
+  text-align: center;
+}
+
+.dis-scroll {
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  overscroll-behavior: none;
+}
+
+.page--ios .dis-scroll {
+  position: relative;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  @extend .flex;
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  @extend .flex;
+  flex-direction: column;
+}
+
+.btn-primary {
+  --color-bg: var(--orange-primary);
+  --color-border: transparent;
+  --color-hover: var(--orange-hover-focus);
+  --color-focus-bg: var(--orange-primary);
+  --color-focus-border: var(--orange-focus-active);
+  --color-active: var(--orange-focus-active);
+  padding: 13px 19px;
+  border: 3px solid var(--color-border);
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 700;
+  color: var(--white);
+  background-color: var(--color-bg);
+  transition: background-color .2s ease-in-out, border-color .2s ease-in-out;
+
+  @include hover {
+    background-color: var(--color-hover);
+  }
+
+  &:focus-visible {
+    border-color: var(--color-focus-border);
+    background-color: var(--color-focus-bg);
+    outline: none;
+  }
+
+  &:active {
+    background-color: var(--color-active);
+  }
+
+  @include small-mobile {
+    padding: 9px 19px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+.btn-secondary {
+  @extend .btn-primary;
+  --color-bg: transparent;
+  --color-border: var(--orange-primary);
+  --color-hover: var(--orange-primary);
+  --color-focus-bg: var(--orange-hover-focus);
+  --color-focus-border: var(--orange-primary);
+}
+
+.input-error-wrapper {
+  position: relative;
+}
+
+.input-styles {
+  $error-color: var(--light-input-error);
+  --placeholder-color: var(--gray-99);
+  padding: 15px 22px;
+  border: 1px solid transparent;
+  line-height: 19px;
+  color: var(--black-20);
+  background-color: var(--gray-e9);
+  transition: border-color .2s ease-in-out;
+
+  & + .input-error {
+    position: absolute;
+    top: 2px;
+    left: 22px;
+    display: none;
+    font-size: 9px;
+    color: $error-color;
+  }
+
+  &::placeholder {
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--placeholder-color);
+  }
+
+  @include hover {
+    &::placeholder {
+      color: var(--orange-primary);
+    }
+  }
+
+  &:focus-visible {
+    border-color: var(--orange-primary);
+    outline: none;
+  }
+
+  &.--is-active {
+    border-color: transparent;
+  }
+
+  &.--error {
+    border-color: $error-color;
+
+    & + .input-error {
+      display: inline;
+    }
+  }
+
+  @include small-mobile {
+    padding: 10px 22px;
+
+    &::placeholder {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+}
+
+.input-styles-dark {
+  @extend .input-styles;
+  --placeholder-color: var(--gray-ca);
+  $error-color: var(--dark-input-error);
+  color: var(--white);
+  background-color: var(--black-4a);
+}
+
+
+.cancel-btn {
+  display: block;
+  border-radius: 50%;
+  rotate: 45deg;
+  background-color: var(--gray-80);
+  transition: background-color .2s ease-in-out;
+
+  &::before, &::after{
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 1px;
+    translate: -50% -50%;
+    background-color: var(--white);
+  }
+
+  &::after {
+    width: 1px;
+    height: 60%;
+  }
+
+  @include hover {
+    background-color: var(--orange-primary);
+  }
+
+  &:focus-visible {
+    background-color: var(--orange-hover-focus);
+    outline: none;
+  }
+
+  &:active {
+    background-color: var(--orange-focus-active);
+  }
+}

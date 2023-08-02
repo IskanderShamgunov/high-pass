@@ -1,0 +1,61 @@
+<section class="contacts" id="contacts">
+  <div class="container">
+
+    <h2 class="section-title contacts__title">
+      Контакты
+    </h2>
+
+    <div class="contacts__grid">
+      <div class="contacts__ya-map ya-map">
+        <div id="ya-map" class="ya-map__map"></div>
+        <div class="ya-map__map-descr map-descr flex-column">
+
+          <button class="map-descr__text-close btn-reset cancel-btn" type="button" aria-label="Закрыть адрес"></button>
+
+          <h3 class="map-descr__title">
+            Студия «High pass»
+          </h3>
+
+          <address class="map-descr__address">
+              107045, Москва, Даев переулок, дом 41, бизнес-центр «Даев Плаза», этаж 8, офис № 82
+            <a href="tel:+749542423532" class="map-descr__link">
+              +7 495 424-23-532
+            </a>
+          </address>
+
+        </div>
+      </div>
+
+      <form class="contacts__form contacts-form flex-column form-control" novalidate>
+
+        <h3 class="contacts-form__title">
+          Оставить заявку
+        </h3>
+
+        <p class="contacts-form__descr">
+          Оставьте ваши данные, указав в графе «Комментарий» желаемые время и дату съёмки или другого мероприятия
+        </p>
+
+        <div class="contacts-form__wrapper flex-column">
+          <div class="contacts-form__input-wrapper input-error-wrapper">
+            <input class="contacts-form__input input-control input-reset input-styles" type="text" placeholder="Имя" name="name" required>
+            <span class="contacts-form__input-error input-error">Недопустимый формат</span>
+          </div>
+
+          <div class="contacts-form__input-wrapper input-error-wrapper">
+            <input class="contacts-form__input input-control input-reset input-styles" type="email" placeholder="Email" name="email" required>
+            <span class="contacts-form__input-error input-error">Недопустимый формат</span>
+          </div>
+
+          <textarea class="contacts-form__input contacts-form__textarea input-reset input-styles" placeholder="Комментарий" name="comment" cols="30" rows="10"></textarea>
+
+          <button class="contacts-form__btn btn-reset btn-primary">
+            Отправить
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</section>
